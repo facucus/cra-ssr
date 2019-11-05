@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch, NavLink } from "react-router-dom";
+import Routes from "./routes";
 
-function App() {
+import styles from "./app.module.scss";
+export default props => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className={styles.imgContainer}>
+        <img src="https://about.canva.com/wp-content/uploads/sites/3/2016/08/logos-1.png" />
+      </div>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/photographer-profile">Photographer Profile</NavLink>
+        </li>
+        <li>
+          <NavLink to="/posts">Posts</NavLink>
+        </li>
+      </ul>
+
+      <Switch>
+        {Routes.map((route, i) => (
+          <Route key={i} {...route} />
+        ))}
+      </Switch>
     </div>
   );
-}
-
-export default App;
+};
